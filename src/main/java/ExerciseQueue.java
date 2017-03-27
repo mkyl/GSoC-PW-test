@@ -19,6 +19,9 @@ public class ExerciseQueue {
     Node head = null;
     Node tail = null;
 
+    /**
+     * Add a single element to the end of the queue
+     */
     private void add(int input) {
         Node newEntry = new Node(input);
 
@@ -33,6 +36,9 @@ public class ExerciseQueue {
         }
     }
 
+    /**
+     * Remove a single element from the start of the queue, discarding it
+     */
     private int remove() throws NoSuchElementException {
         if (head == null) {
             throw new NoSuchElementException("Remove called on empty queue");
@@ -49,6 +55,9 @@ public class ExerciseQueue {
         return result;
     }
 
+    /**
+     * Returns the first element in the queue without modifying anything
+     */
     private int peek() throws NoSuchElementException {
         if (head != null)
             return head.value;
@@ -57,7 +66,7 @@ public class ExerciseQueue {
     }
 
     /**
-     * Processes a preformatted string and outputs the result into an output stream.
+     * Processes a preformatted string and outputs the result into Standard out.
      * Format is as follows: "1 x" queues the integer x into end of the queue; "2" 
      * queues the element at the front of the queue; "3" prints the element at the
      * front of the queue.
@@ -65,30 +74,26 @@ public class ExerciseQueue {
      * @param input String of formatted commands
      * @param output The output stream to write results to.
      */
-    public void process(String input, ByteArrayOutputStream output) {
+    public void process(String input) {
         Scanner inputScanner = new Scanner(input);
         int commandCount = inputScanner.nextInt();
 
-        try {
-            for(int i = 1; i <= commandCount; i++) {
-                int token = inputScanner.nextInt();
-                switch(token) {
-                    case 1: this.add(inputScanner.nextInt());
-                            break;
-                    case 2: this.remove();
-                            break;
-                    case 3: byte[] bytes = (this.peek() + "\n").getBytes("UTF8");
-                            output.write(bytes);
-                            break;
-                }
+        for(int i = 1; i <= commandCount; i++) {
+            int token = inputScanner.nextInt();
+            switch(token) {
+                case 1: this.add(inputScanner.nextInt());
+                        break;
+                case 2: this.remove();
+                        break;
+                case 3: System.out.println(Integer.toString(this.peek()));
+                        break;
             }
-        } catch (UnsupportedEncodingException e) {
-            System.err.println("This system does not support UTF-8 encoding");
-        } catch (IOException f) {
-            System.err.println("Error occured while writing to output stream provided");
         }
     }
 
+    /**
+     * Internal class, representing a single node in a linked list
+     */
     class Node {
         int value;
         Node next;
