@@ -25,6 +25,32 @@ public class RunningMedianTest {
         compareOutput(input, expectedOutput);
     }
 
+    @Test public void oddNumberOfElements() {
+        String input = String.format("9%n1%n2%n3%n4%n5%n6%n7%n8%n9%n");
+        String expectedOutput = String.format("1.00%n1.50%n2.00%n2.50%n3.00%n3.50"
+            + "%n4.00%n4.50%n5.00%n");
+        compareOutput(input, expectedOutput);
+    }
+
+    @Test public void differentNumbers() {
+        String input = String.format("10%n1%n3%n6%n7%n8%n11%n15%n16%n19%n21%n");
+        String expectedOutput = String.format("1.00%n2.00%n3.00%n4.50%n6.00%n6.50"
+            + "%n7.00%n7.50%n8.00%n9.50%n");
+        compareOutput(input, expectedOutput);
+    }
+
+    @Test public void singleElement() {
+        String input = String.format("1%n271%n");
+        String expectedOutput = String.format("271.00%n");
+        compareOutput(input, expectedOutput);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void illegalCount() {
+        RunningMedian classUnderTest = new RunningMedian();
+        classUnderTest.process(String.format("-1%n5%n7%n"));
+    }
+
     private void compareOutput(String input, String expectedOutput) {
         RunningMedian classUnderTest = new RunningMedian();
         classUnderTest.process(input);
