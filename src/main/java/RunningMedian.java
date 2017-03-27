@@ -8,6 +8,8 @@ import java.util.Queue;
  * RunningMedian will provide the Median of a set of numbers provided via an
  * input stream. The data **must** be provided in ascending order. Running Median
  * will provide the Median as the elements are added one by one.
+ *
+ * @author Mohammad Kayali (mkyl)
  */
 public class RunningMedian {
     Queue<Integer> integerList = new LinkedList<Integer>();
