@@ -56,6 +56,28 @@ public class RunningMedianTest {
     }
 
     /**
+     * Runs the test input where an even number of integers are all the same number,
+     * and checks against expected output
+     */
+    @Test public void repeatedNumber() {
+        String input = String.format("10%n76%n76%n76%n76%n76%n76%n76%n76%n76%n76%n");
+        String expectedOutput = String.format("76.00%n76.00%n76.00%n76.00%n76.00%n76.00"
+            + "%n76.00%n76.00%n76.00%n76.00%n");
+        compareOutput(input, expectedOutput);
+    }
+
+    /**
+     * Runs the test input where an odd number of integers are all the same number,
+     * and checks against expected output
+     */
+    @Test public void repeatedNumberOdd() {
+        String input = String.format("9%n76%n76%n76%n76%n76%n76%n76%n76%n76%n");
+        String expectedOutput = String.format("76.00%n76.00%n76.00%n76.00%n76.00%n76.00"
+            + "%n76.00%n76.00%n76.00%n");
+        compareOutput(input, expectedOutput);
+    }
+
+    /**
      * Attempts to find the median of a single element set
      */
     @Test public void singleElement() {
