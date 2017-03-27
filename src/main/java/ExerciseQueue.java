@@ -71,6 +71,8 @@ public class ExerciseQueue {
      * queues the element at the front of the queue; "3" prints the element at the
      * front of the queue.
      *
+     * Throws NoSuchElementException if peek or remove is called on empty queue.
+     *
      * @param input String of formatted commands
      * @param output The output stream to write results to.
      */
