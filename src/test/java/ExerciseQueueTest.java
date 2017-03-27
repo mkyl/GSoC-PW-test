@@ -1,6 +1,5 @@
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.NoSuchElementException;
 
