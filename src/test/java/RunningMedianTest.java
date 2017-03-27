@@ -4,6 +4,7 @@ import org.junit.After;
 import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public class RunningMedianTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -48,12 +49,14 @@ public class RunningMedianTest {
     @Test (expected = IllegalArgumentException.class)
     public void illegalCount() {
         RunningMedian classUnderTest = new RunningMedian();
-        classUnderTest.process(String.format("-1%n5%n7%n"));
+        Scanner inputScanner = new Scanner(String.format("-1%n5%n7%n"));
+        classUnderTest.process(inputScanner);
     }
 
     private void compareOutput(String input, String expectedOutput) {
         RunningMedian classUnderTest = new RunningMedian();
-        classUnderTest.process(input);
+        Scanner inputScanner = new Scanner(input);
+        classUnderTest.process(inputScanner);
         assertEquals("Sample output and actual output must match.", 
             expectedOutput, outContent.toString());
     }
