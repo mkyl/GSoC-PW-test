@@ -2,3 +2,4 @@ language: java
 
 before_install:
  - chmod +x gradlew
+ - chmox +x gradle/wrapper/gradle-wrapper.jar
