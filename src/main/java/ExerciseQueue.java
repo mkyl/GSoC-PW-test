@@ -59,10 +59,10 @@ public class ExerciseQueue {
      * Returns the first element in the queue without modifying anything
      */
     private int peek() throws NoSuchElementException {
-        if (head != null)
-            return head.value;
-        else 
+        if (head == null)
             throw new NoSuchElementException("Peeked an empty queue");
+        else 
+            return head.value;
     }
 
     /**
